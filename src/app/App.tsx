@@ -9,16 +9,55 @@ import {
   useRouteError,
   isRouteErrorResponse,
 } from 'react-router-dom';
+import { colors } from '@/shared/styles';
 
-const Container = styled.div`
+// Set up a top-level container for our entire page
+const AppContainer = styled.div`
+  display: inline-block;
+  min-width: 100vw;
+  min-height: 100vh;
   width: 100%;
   height: 100%;
+
+  background-color: ${colors.primaryWhite};
+  overflow-y: auto;
+  padding: 10px;
   border: 1px solid red;
 `;
 
-const Subcontainer = styled(Container)`
+const PageContainer = styled.div`
+  // Expand to full height and width
+  height: 100%;
+  width: 100%;
+  min-height: 100%;
+  min-width: 100%;
+
+  // Render as a flex column. Start at the top and horizontally center.
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+
+  // Relative positioning
+  position: relative;
+  border: 1px dotted black;
+`;
+
+const ReactiveContainer = styled.div`
+  height: 100%;
+  width: 100%;
+  min-height: 450px;
+  max-width: 600px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+
+  margin: auto;
   border: 1px dashed blue;
 `;
+
 function BaseError() {
   const error = useRouteError();
 
@@ -49,9 +88,11 @@ const router = createBrowserRouter(
     <Route
       path="/"
       element={
-        <Container>
-          <Outlet />
-        </Container>
+        <AppContainer>
+          <PageContainer>
+            <Outlet />
+          </PageContainer>
+        </AppContainer>
       }
       errorElement={<BaseError />}
     >
@@ -59,17 +100,24 @@ const router = createBrowserRouter(
       <Route index element={<>Home Page</>} />
 
       {/* Login Page */}
-      <Route path="login" element={<>Login Page</>} />
+      <Route
+        path="login"
+        element={
+          <ReactiveContainer>
+            <>Login Page</>
+          </ReactiveContainer>
+        }
+      />
 
       {/* Dashboard Routes */}
       <Route
         path="dashboard"
         // loader={todosLoader}
         element={
-          <Subcontainer>
+          <ReactiveContainer>
             <div>Hello starter</div>
             <Outlet />
-          </Subcontainer>
+          </ReactiveContainer>
         }
       >
         <Route index element={<>Dashboard Index</>} />

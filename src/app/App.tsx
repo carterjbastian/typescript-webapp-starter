@@ -11,6 +11,9 @@ import {
 } from 'react-router-dom';
 import { colors } from '@/shared/styles';
 
+// Import pages
+import PlanPage from '@/services/PlanPage';
+
 // Set up a top-level container for our entire page
 const AppContainer = styled.div`
   display: inline-block;
@@ -111,17 +114,16 @@ const router = createBrowserRouter(
 
       {/* Dashboard Routes */}
       <Route
-        path="dashboard"
+        path="plan"
         // loader={todosLoader}
         element={
           <ReactiveContainer>
-            <div>Hello starter</div>
             <Outlet />
           </ReactiveContainer>
         }
       >
         <Route index element={<>Dashboard Index</>} />
-        <Route path=":id" element={<>Dashboard id path</>} />
+        <Route path=":planId" element={<PlanPage />} />
       </Route>
     </Route>
   )

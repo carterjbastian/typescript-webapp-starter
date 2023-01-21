@@ -1,10 +1,9 @@
 import { createApi, fetchBaseQuery, retry } from '@reduxjs/toolkit/query/react';
 // import { RootState } from '@/app/store';
 
-// https://pokeapi.co/api/v2/pokemon/50
 // Create our baseQuery instance
 const baseQuery = fetchBaseQuery({
-  baseUrl: '/',
+  baseUrl: 'http://localhost:5050/',
   // prepareHeaders: (headers, { getState }) => {
   //   // By default, if we have a token in the store, let's use that for authenticated requests
   //   const token = (getState() as RootState).auth.token;
@@ -31,7 +30,7 @@ export const api = createApi({
    * Otherwise, a single API definition should be used in order to support tag invalidation,
    * among other features
    */
-  reducerPath: 'pokemonApi',
+  reducerPath: 'planApi',
   /**
    * A bare bones base query would just be `baseQuery: fetchBaseQuery({ baseUrl: '/' })`
    */
@@ -40,7 +39,7 @@ export const api = createApi({
    * Tag types must be defined in the original API definition
    * for any tags that would be provided by injected endpoints
    */
-  tagTypes: ['Auth', 'Pokemon'],
+  tagTypes: ['Auth', 'Plan'],
   /**
    * This api has endpoints injected in adjacent files,
    * which is why no endpoints are shown below.
@@ -51,6 +50,6 @@ export const api = createApi({
 
 export const enhancedApi = api.enhanceEndpoints({
   endpoints: () => ({
-    getPost: () => 'test',
+    getTest: () => 'test',
   }),
 });

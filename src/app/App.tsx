@@ -10,9 +10,11 @@ import {
   isRouteErrorResponse,
 } from 'react-router-dom';
 import { colors } from '@/shared/styles';
+import { Button } from 'pay-component-library';
 
 // Import pages
-import PlanPage from '@/services/PlanPage';
+import PlanPage from '@/pages/plan/PlanPage';
+import LoginPage from '@/pages/login/LoginPage';
 
 // Set up a top-level container for our entire page
 const AppContainer = styled.div`
@@ -100,16 +102,25 @@ const router = createBrowserRouter(
       errorElement={<BaseError />}
     >
       {/* Home Page */}
-      <Route index element={<>Home Page</>} />
+      <Route
+        index
+        element={
+          <>
+            <>Home Page</>
+            <Button text="Hello world" />
+          </>
+        }
+      />
 
       {/* Login Page */}
       <Route
         path="login"
         element={
           <ReactiveContainer>
-            <>Login Page</>
+            <LoginPage />
           </ReactiveContainer>
         }
+        errorElement={<BaseError />}
       />
 
       {/* Dashboard Routes */}

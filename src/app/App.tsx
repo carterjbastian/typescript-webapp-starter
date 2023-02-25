@@ -12,6 +12,9 @@ import {
 import { colors } from '@/shared/styles';
 import { Button } from 'pay-component-library';
 
+// Import Components
+import Header from '@/pages/plan/Header';
+
 // Import pages
 import PlanPage from '@/pages/plan/PlanPage';
 import LoginPage from '@/pages/login/LoginPage';
@@ -24,10 +27,8 @@ const AppContainer = styled.div`
   width: 100%;
   height: 100%;
 
-  background-color: ${colors.primaryWhite};
+  background-color: ${colors.bodyWhite};
   overflow-y: auto;
-  padding: 10px;
-  border: 1px solid red;
 `;
 
 const PageContainer = styled.div`
@@ -45,7 +46,6 @@ const PageContainer = styled.div`
 
   // Relative positioning
   position: relative;
-  border: 1px dotted black;
 `;
 
 const ReactiveContainer = styled.div`
@@ -95,7 +95,11 @@ const router = createBrowserRouter(
       element={
         <AppContainer>
           <PageContainer>
+            {/* Header */}
+            <Header />
+            {/* Content */}
             <Outlet />
+            {/* Footer */}
           </PageContainer>
         </AppContainer>
       }

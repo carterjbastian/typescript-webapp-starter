@@ -26,7 +26,7 @@ table {
 }
 
 /** ======= Import Google Web Font */
-@import url(https://fonts.googleapis.com/css2?family=Outfit:wght@300;600;800);
+@import url(https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800);
 
 /** ======= Browser Resets (normalizeCss) */
 
@@ -377,7 +377,7 @@ template {
 html, body {
   height: 100%;
   font-size: 16px;
-  font-family: "Outfit", sans-serif;
+  font-family: "Manrope", sans-serif;
 }
 
 /*
@@ -389,7 +389,7 @@ body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-family: "Outfit", sans-serif;
+  font-family: "Manrope", sans-serif;
 }
 
 /*

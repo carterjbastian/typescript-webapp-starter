@@ -5,6 +5,7 @@ export const colors = {
   // Primary colors
   primaryWhite: '#FBFEFC',
   primaryBlack: '#24282B',
+  primaryGreen: '#E1EBE6',
 
   // Accent Colors
   accentGreen: '#47887B',

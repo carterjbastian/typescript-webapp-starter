@@ -17,7 +17,6 @@ import Header from '@/pages/plan/Header';
 
 // Import pages
 import PlanPage from '@/pages/plan/PlanPage';
-import LoginPage from '@/pages/login/LoginPage';
 
 // Set up a top-level container for our entire page
 const AppContainer = styled.div`
@@ -48,19 +47,48 @@ const PageContainer = styled.div`
   position: relative;
 `;
 
-const ReactiveContainer = styled.div`
-  height: 100%;
+const ContentContainer = styled.div`
+  height: fit-content;
+  min-height: fit-content;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+`;
+
+interface StarterProps {
+  height: string;
+}
+const ContentStarter = styled.div<StarterProps>`
+  background-color: ${colors.primaryGreen};
+  width: 100%;
+  height: ${(p) => p.height};
+  min-height: ${(p) => p.height};
+`;
+
+interface PullupProps {
+  pullUp: string;
+}
+const ReactiveContainer = styled.div<PullupProps>`
   width: 100%;
   min-height: 450px;
   max-width: 600px;
 
+  position: relative;
+  top: ${(p) => p.pullUp};
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: relative;
 
   margin: auto;
   border: 1px dashed blue;
+`;
+
+const ContentMain = styled.div`
+  display: inline-block;
+  width: 100%;
+
+  border: 1px solid red;
 `;
 
 function BaseError() {
@@ -100,6 +128,7 @@ const router = createBrowserRouter(
             {/* Content */}
             <Outlet />
             {/* Footer */}
+            <div>hello</div>
           </PageContainer>
         </AppContainer>
       }
@@ -109,22 +138,16 @@ const router = createBrowserRouter(
       <Route
         index
         element={
-          <>
-            <>Home Page</>
-            <Button text="Hello world" />
-          </>
+          <ContentContainer>
+            <ContentStarter height="600px" />
+            <ContentMain>
+              <ReactiveContainer pullUp="-300px">
+                <>Home Page</>
+                <Button text="Hello world" />
+              </ReactiveContainer>
+            </ContentMain>
+          </ContentContainer>
         }
-      />
-
-      {/* Login Page */}
-      <Route
-        path="login"
-        element={
-          <ReactiveContainer>
-            <LoginPage />
-          </ReactiveContainer>
-        }
-        errorElement={<BaseError />}
       />
 
       {/* Dashboard Routes */}
@@ -132,7 +155,7 @@ const router = createBrowserRouter(
         path="plan"
         // loader={todosLoader}
         element={
-          <ReactiveContainer>
+          <ReactiveContainer pullUp="0">
             <Outlet />
           </ReactiveContainer>
         }

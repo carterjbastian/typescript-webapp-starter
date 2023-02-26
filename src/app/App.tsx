@@ -10,13 +10,13 @@ import {
   isRouteErrorResponse,
 } from 'react-router-dom';
 import { colors } from '@/shared/styles';
-import { Button } from 'pay-component-library';
 
 // Import Components
 import Header from '@/header/Header';
 import Footer from '@/footer/Footer';
 
 // Import pages
+import HomePage from '@/pages/home/HomePage';
 import PlanPage from '@/pages/plan/PlanPage';
 
 // Set up a top-level container for our entire page
@@ -71,9 +71,9 @@ interface PullupProps {
   pullUp: string;
 }
 const ReactiveContainer = styled.div<PullupProps>`
-  width: 100%;
-  min-height: 450px;
-  max-width: 600px;
+  width: 85%;
+  min-width: 300px;
+  max-width: 1200px;
 
   position: relative;
   top: ${(p) => p.pullUp};
@@ -82,7 +82,6 @@ const ReactiveContainer = styled.div<PullupProps>`
   align-items: center;
 
   margin: auto;
-  border: 1px dashed blue;
 `;
 
 const ContentMain = styled.div`
@@ -140,12 +139,9 @@ const router = createBrowserRouter(
         index
         element={
           <ContentContainer>
-            <ContentStarter height="600px" />
+            <ContentStarter height="735px" />
             <ContentMain>
-              <ReactiveContainer pullUp="-300px">
-                <>Home Page</>
-                <Button text="Hello world" />
-              </ReactiveContainer>
+              <HomePage />
             </ContentMain>
           </ContentContainer>
         }
@@ -156,9 +152,14 @@ const router = createBrowserRouter(
         path="plan"
         // loader={todosLoader}
         element={
-          <ReactiveContainer pullUp="0">
-            <Outlet />
-          </ReactiveContainer>
+          <ContentContainer>
+            <ContentStarter height="600px" />
+            <ContentMain>
+              <ReactiveContainer pullUp="-484px">
+                <Outlet />
+              </ReactiveContainer>
+            </ContentMain>
+          </ContentContainer>
         }
       >
         <Route index element={<>Dashboard Index</>} />

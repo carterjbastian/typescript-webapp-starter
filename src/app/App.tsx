@@ -13,7 +13,8 @@ import { colors } from '@/shared/styles';
 import { Button } from 'pay-component-library';
 
 // Import Components
-import Header from '@/pages/plan/Header';
+import Header from '@/header/Header';
+import Footer from '@/footer/Footer';
 
 // Import pages
 import PlanPage from '@/pages/plan/PlanPage';
@@ -128,7 +129,7 @@ const router = createBrowserRouter(
             {/* Content */}
             <Outlet />
             {/* Footer */}
-            <div>hello</div>
+            <Footer />
           </PageContainer>
         </AppContainer>
       }

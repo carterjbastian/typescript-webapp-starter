@@ -18,4 +18,5 @@ export const colors = {
   textGrey: '#525C76',
   outlineGrey: '#CACDD5',
   tableBgGrey: '#F5F6F7',
+  footerBlack: '#1D2022',
 };
